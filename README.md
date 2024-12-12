@@ -1,1 +1,81 @@
-# CDRex
+# CDRex Model Framework
+
+This model framework, using the calibration detailed in Appendix A, is implemented in the Excel application **CDRex**. 
+
+## Application Instructions
+
+CDRex can be applied as follows:
+
+### Input Variations
+
+The user can enter two types of variations in the red-framed cells of table D20:N40 and have the resulting market responses displayed:
+
+1. **Marine CDR Application (F23:H38):**
+   - Enter how much MtCO2 marine CDRs are applied in each of the 16 world regions.
+   - Three options are available: Ocean Alkalinity Enhancement (OAE), Artificial Upwelling (AU), and Blue Carbon (BC).
+   - Users can contribute their own assumptions about regional CDR potentials.
+
+2. **Unilateral Ambition Level Increases (J23:J38 or M23:M38):**
+   - Assume changes in the abatement rate by setting a new target in these cells, differing from the values of `A_i` in the columns to the left.
+   - Ensure "yes" is selected in the drop-down menu of cell J22 or M22 for these changes to take effect.
+
+### Distinction of Commitment Levels
+
+- **Blue (Low Ambition):** All world regions meet only the minimum of their pledges.
+- **Green (High Ambition):** All world regions meet the maximum of their announcements.
+
+### Results Table
+
+Results are displayed in table A44:Z65, providing a concise summary of the model's projections of market responses to input variations entered:
+
+- **Columns C and D:** GDP (`Y̅_i`) and CO2 emissions (`E̅_i`) for the BAU case for all world regions (highlighted in rusty red).
+- **Low Ambition (Blue):** Column E for targets promised in the NDC; F-I reactions in domestic markets; J-O for international markets 
+- **High Ambition (Green):** Columns P for targets promised in the NDC; Q-T reactions in domestic markets; U-Z for international markets 
+
+For associated standard deviations and variances, refer to the "Analysis" tab of CDRex.
+
+### Domestic Carbon Markets (F45:I65 or Q45:T65)
+
+No trading of permits between the world regions
+
+- **Baseline:** Regional carbon markets achieving emissions reduction targets separately in each world region, without user-induced changes.
+- Via market mechanisms, a price is set for emission certificates (columns F and Q) and costs of achieving a given target (`A_i`) (columns H and S) are determined.
+- **User Variations:** Entered changes affect only the specified regions, as the individual carbon markets are not linked to each other. (Prices: columns G and I, Costs: columns R and T).
+  
+### International Carbon Markets (J45:O65 or U45:Z65)
+
+Emission reduction permits of the different world regions can be traded without restriction, establishing a common global price (`p`), displayed in the orange cell in row 45.
+
+- **Baseline:**
+  - For each region, the emission quantities (columns J or U) and the trading quantities of permits purchased (positive) or sold (negative) (columns L or W) are provided. These quantities add up to the target emissions (columns E or P).
+  - Total costs of meeting a target (columns N or Y) are calculated as the sum of abatement costs and revenues or expenses from permit trading.
+
+- **With CDR and New Targets:**
+  - The columns with lighter backgrounds show updated values for CO2 emissions, permit quantities, and total costs when accounting for specified CDR quantities ("with CDR") or adjustments to targets ("with CDR and new targets").
+  - As international carbon markets are interconnected, measures in one region influence the global system. Changes lead to shifts in trading volumes, emissions, and costs at the new global permit price, (`p^CDR`) (cells N46 or X46).
+
+
+### Summary Tables
+
+
+- **Tables P6:S42 and U6:X42:** These tables provide a detailed breakdown of the effects of CDR applications and unilateral target adjustments on emissions, permit trading, and costs:
+  
+  - **Global Metrics:** Lines 6-18 highlight aggregate changes, including emissions, percentage reductions, permit prices, and reduction costs caused by user inputs.
+  - **Additional Global Costs:** Line 42 (highlighted in orange) explicitly shows the additional global reduction costs resulting from the selected measures.
+
+- **Tables P6:S42 and U6:X42:** Summarize changes due to CDR applications and unilateral target adjustments on emissions, permit trading, and costs:
+  - **Regional Changes:** Lines 23-38 summarize changes in emissions, permits, and costs for the 16 world regions in the international carbon market.
+  - **Global Metrics:** Lines 6-18 highlight aggregate changes, including emissions, percentage reductions, permit prices, and reduction costs caused by user inputs.
+  - **Additional Global Costs:** Line 42 (highlighted in orange) explicitly shows the additional global reduction costs resulting from the selected measures.
+- **Additional Notes:** Since the application of CDR reduces the need to save to meet the NDC target, there are cost savings from less avoidance. The global benefits (negative costs) generated by the measure provide an approximation of how much the CDR measure under consideration is likely to cost at most.
+
+### Visualizations
+
+- **Cost Comparisons:** 
+  - Top-left figures in the Excel sheet illustrate total costs for NDC targets:
+    - **Blue (Low Ambition):** Minimum pledges.
+    - **Green (High Ambition):** Maximum announcements.
+  - **Yellow Bar (Domestic Trading Schemes with Variations):** Appears only if regional variations are entered for the world region and therefore there are diverging costs.
+  - Larger versions of these figures are available in the "Figures" tab.
+
+Refer to Appendix A for detailed calibration information.
